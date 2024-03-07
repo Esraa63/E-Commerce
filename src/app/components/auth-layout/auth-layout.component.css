@@ -1,0 +1,11 @@
+.bg {
+  min-height: 90vh;
+  /* background: #440657;
+  background: conic-gradient(from 135deg, #440657, #6413e6);
+  
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=694d31&c2=f2d8bb&gt=c&gd=dbr
+*/
+  background: #694d31;
+  background: conic-gradient(from 135deg, #694d31, #f2d8bb);
+}

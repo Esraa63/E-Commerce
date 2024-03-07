@@ -1,0 +1,41 @@
+<section class="container">
+  <div class="row g-4">
+    <div
+      class="col-md-4 cursor-pointer"
+      *ngFor="let category of categories"
+      (click)="getSubCategory(category._id)"
+      (click)="getSpecificCategory(category._id)"
+    >
+      <div class="card">
+        <div class="card-image">
+          <img
+            [src]="category.image"
+            class="img-fluid w-100"
+            style="height: 350px"
+            [alt]="category.name"
+          />
+        </div>
+
+        <div class="card-body">
+          <h3 class="text-center">{{ category.name }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SubCategories -->
+  <div class="mt-5">
+    <h1 class="main-color text-center" [hidden]="subCategories.length <= 0">
+      {{ specific.name }} subcategories
+    </h1>
+    <div class="row py-4 g-4">
+      <div class="col-md-4" *ngFor="let subCategory of subCategories">
+        <div class="card">
+          <div class="card-body">
+            {{ subCategory.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

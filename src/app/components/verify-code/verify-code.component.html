@@ -1,0 +1,28 @@
+<section>
+  <form class="w-75 mx-auto" [formGroup]="resetCode" (ngSubmit)="checkCode()">
+    <h2 class="text-center">Enter Verify Code</h2>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="restCode"
+        formControlName="resetCode"
+      />
+      <div
+        class="alert alert-danger mt-1"
+        *ngIf="
+          resetCode.get('resetCode')?.errors &&
+          resetCode.get('resetCode')?.touched
+        "
+      >
+        <p *ngIf="resetCode.get('resetCode')?.getError('required')">
+          Code required
+        </p>
+      </div>
+    </div>
+    <p class="py-1 font-lg alert alert-danger" *ngIf="msg">{{ msg }}</p>
+    <button class="btn btn-auth p-2 font-lg" [disabled]="resetCode.invalid">
+      Rest Code
+    </button>
+  </form>
+</section>

@@ -1,0 +1,79 @@
+<div class="p-2 rounded-3 w-75 mx-auto">
+  <form
+    action=""
+    class="w-100 mx-auto h-75"
+    [formGroup]="paymentForm"
+    (ngSubmit)="checkForm()"
+  >
+    <div class="mb-3">
+      <label for="name" class="form-label">Details</label>
+      <input
+        type="text"
+        class="form-control"
+        id="details"
+        formControlName="details"
+        #inputDetails
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        paymentForm.get('details')?.errors &&
+        (paymentForm.get('details')?.touched || inputDetails.value.length > 0)
+      "
+    >
+      <p *ngIf="paymentForm.get('details')?.getError('required')">
+        Details Required
+      </p>
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        formControlName="phone"
+        #inputPhone
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        paymentForm.get('phone')?.errors &&
+        (paymentForm.get('phone')?.touched || inputPhone.value.length > 0)
+      "
+    >
+      <p *ngIf="paymentForm.get('phone')?.getError('required')">
+        Phone Required
+      </p>
+      <p *ngIf="paymentForm.get('phone')?.getError('pattern')">
+        accept only egypt phone numbers
+      </p>
+    </div>
+    <div class="mb-3">
+      <label for="city" class="form-label">City</label>
+      <input
+        type="text"
+        class="form-control"
+        id="city"
+        formControlName="city"
+        #inputCity
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        paymentForm.get('city')?.errors &&
+        (paymentForm.get('city')?.touched || inputCity.value.length > 0)
+      "
+    >
+      <p *ngIf="paymentForm.get('city')?.getError('required')">City Required</p>
+    </div>
+    <button
+      class="btn p-2 font-lg mt-5 w-100 btn-pay"
+      [disabled]="paymentForm.invalid"
+    >
+      Pay Now
+    </button>
+  </form>
+</div>

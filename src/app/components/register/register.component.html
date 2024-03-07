@@ -1,0 +1,147 @@
+<section class="p-2 rounded-3 w-75 mx-auto">
+  <h2 class="text-center">Register Now</h2>
+  <form
+    action=""
+    class="w-100 mx-auto h-75"
+    [formGroup]="registerForm"
+    (ngSubmit)="checkForm()"
+  >
+    <div class="mb-3">
+      <label for="userName" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="userName"
+        formControlName="name"
+        #inputName
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        registerForm.get('name')?.errors &&
+        (registerForm.get('name')?.touched || inputName.value.length > 0)
+      "
+    >
+      <p *ngIf="registerForm.get('name')?.getError('required')">
+        Name is required
+      </p>
+      <p *ngIf="registerForm.get('name')?.getError('minlength')">
+        Name min length 3
+      </p>
+      <p *ngIf="registerForm.get('name')?.getError('maxlength')">
+        Name max length 20
+      </p>
+    </div>
+    <div class="mb-3">
+      <label for="userEmail" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="userEmail"
+        formControlName="email"
+        #inputEmail
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        registerForm.get('email')?.errors &&
+        (registerForm.get('email')?.touched || inputEmail.value.length > 0)
+      "
+    >
+      <p *ngIf="registerForm.get('email')?.getError('required')">
+        Email required
+      </p>
+      <p *ngIf="registerForm.get('email')?.getError('email')">
+        Email inValid format
+      </p>
+    </div>
+    <div class="mb-3">
+      <label for="userPass" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="userPass"
+        formControlName="password"
+        #inputPass
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        registerForm.get('password')?.errors &&
+        (registerForm.get('password')?.touched || inputPass.value.length > 0)
+      "
+    >
+      <p *ngIf="registerForm.get('password')?.getError('required')">
+        Password required
+      </p>
+      <p *ngIf="registerForm.get('password')?.getError('pattern')">
+        Password must start with upperCase then from 6 to 10
+      </p>
+    </div>
+    <div class="mb-3">
+      <label for="userRePass" class="form-label">RePassword</label>
+      <input
+        type="password"
+        class="form-control"
+        id="userRePass"
+        formControlName="rePassword"
+        #inputRePass
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        registerForm.get('rePassword')?.errors &&
+        (registerForm.get('rePassword')?.touched ||
+          inputRePass.value.length > 0)
+      "
+    >
+      <p *ngIf="registerForm.get('rePassword')?.getError('required')">
+        rePassword required
+      </p>
+      <p *ngIf="registerForm.get('rePassword')?.getError('notEqual')">
+        rePassword confirmation is incorrect
+      </p>
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        formControlName="phone"
+        #inputPhone
+      />
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        registerForm.get('phone')?.errors &&
+        (registerForm.get('phone')?.touched || inputPhone.value.length > 0)
+      "
+    >
+      <p *ngIf="registerForm.get('phone')?.getError('required')">
+        Phone number required
+      </p>
+      <p *ngIf="registerForm.get('phone')?.getError('pattern')">
+        accept only egypt phone numbers
+      </p>
+    </div>
+
+    <button
+      class="btn btn-auth p-2 font-lg ms-auto d-block"
+      [disabled]="registerForm.invalid"
+    >
+      <i
+        class="fa-solid fa-spinner fa-spin fa-rotate-270"
+        *ngIf="isLoading"
+      ></i>
+      Register now
+    </button>
+
+    <p class="alert alert-danger mt-2" *ngIf="msg">{{ msg }}</p>
+  </form>
+</section>

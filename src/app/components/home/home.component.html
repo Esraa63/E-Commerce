@@ -1,0 +1,49 @@
+<!-- main slider -->
+<section class="mb-4 container">
+  <div class="row d-flex justify-content-center pt-5">
+    <div class="col-md-4" style="width: 350px">
+      <owl-carousel-o [options]="mainSlider">
+        <ng-template carouselSlide>
+          <img
+            src="./assets/images/41nN4nvKaAL._AC_SY200_.jpg"
+            alt="image1"
+            class="img-fluid"
+        /></ng-template>
+        <ng-template carouselSlide>
+          <img src="./assets/images/61cSNgtEISL._AC_SY200_.jpg" alt="image2"
+        /></ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./assets/images/XCM_Manual_1396328_4379574_Egypt_EG_BAU_GW_DC_SL_Jewelry_379x304_1X._SY304_CB650636675_.jpg"
+            alt="image3"
+        /></ng-template>
+      </owl-carousel-o>
+    </div>
+    <div class="col-md-4" style="width: 350px">
+      <div class="d-flex flex-column">
+        <img
+          src="./assets/images/XCM_Manual_1396328_4379575_Egypt_EG_BAU_GW_DC_SL_Bags_Wallets_379x304_1X._SY304_CB650636675_.jpg"
+          class="img-fluid"
+        />
+        <img
+          src="./assets/images/XCM_Manual_1533480_5305769_379x304_1X._SY304_CB616236518_.jpg"
+          class="img-fluid"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- All Categories -->
+<section class="container-fluid">
+  <owl-carousel-o [options]="categoriesSlider">
+    <ng-container *ngFor="let category of categories">
+      <ng-template carouselSlide>
+        <img [src]="category.image" [alt]="category.name" height="270px" />
+        <h4 class="p-1">{{ category.name }}</h4>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</section>
+<!-- Products -->
+<app-products></app-products>
